@@ -1,0 +1,15 @@
+#!/bin/bash
+
+trap 'rm -f ./temp/my_tmp_file' INT
+trap QUIT
+echo creating file/tmp/my_tmy_file
+date > ./temp/my_tmp_file
+
+echo "press interrupt to interrupt ..."
+while [ -f ./temp/my_tmp_file ]; do
+    echo File exists
+    sleep 1
+done
+echo Escaped!
+
+exit 0
