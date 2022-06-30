@@ -29,28 +29,38 @@ int main(int argc, char *argv[])
 		{
 			double x = ox + lpp * i;
 			double y = oy + lpp * j;
-			int pos = width * j + i; 
+			int pos = width * j + i;
+			int itn = 0;
 			Manderbrot man(std::complex<double>{0.0, 0.0},
 						   N,
 						   std::complex<double>{x, y});
 			while (!man.stop_criterion())
 			{
 				man.forward_step();
+				itn = itn + 1;
 				if (man.is_disconvergence())
 					break;
 			}
-			if (man.stop_criterion())
+			/*
+			//points that disconverge
+		       	if (man.stop_criterion())
 			{
-				cache[pos * 3] = 255;
-				cache[pos * 3 + 1] = 0;
-				cache[pos * 3 + 2] = 0;
+				cache[pos * 3] = 255 - itn * 2.55;
+				cache[pos * 3 + 1] = 255 - itn * 2.55;
+				cache[pos * 3 + 2] = 255 - itn * 2.55;
 			}
+			//points that converge
 			else
 			{
 				cache[pos * 3] = 0;
 				cache[pos * 3 + 1] = 0;
 				cache[pos * 3 + 2] = 0;
-			}
+		       	}
+			*/
+			cache[pos * 3] = 255;
+			cache[pos * 3 + 1] = (itn - 200 ) * (itn - 200)* (itn - 200)* (itn - 200)* (itn - 200)* (itn - 200) *0.03;
+			cache[pos * 3 + 2] = (itn - 200 ) * (itn - 200)* (itn - 200)* (itn - 200)* (itn - 200)* (itn - 200) *0.1;
+			
 		}
 	build_bmp(argv[1], width, height, cache);
 	delete [] cache;
