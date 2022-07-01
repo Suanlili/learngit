@@ -27,6 +27,8 @@ int main(int argc, char *argv[])
 	for (int j = 0; j < height; j++)
 		for (int i = 0; i < width; i++)
 		{
+		  //int bdryn = 0;
+		  
 			double x = ox + lpp * i;
 			double y = oy + lpp * j;
 			int pos = width * j + i;
@@ -37,7 +39,7 @@ int main(int argc, char *argv[])
 			while (!man.stop_criterion())
 			{
 				man.forward_step();
-				itn = itn + 1;
+				itn++;
 				if (man.is_disconvergence())
 					break;
 			}
@@ -60,6 +62,10 @@ int main(int argc, char *argv[])
 			cache[pos * 3] = 255;
 			cache[pos * 3 + 1] = (itn - 200 ) * (itn - 200)* (itn - 200)* (itn - 200)* (itn - 200)* (itn - 200) *0.03;
 			cache[pos * 3 + 2] = (itn - 200 ) * (itn - 200)* (itn - 200)* (itn - 200)* (itn - 200)* (itn - 200) *0.1;
+			/*if(bdryn < 500 && itn == 99 && y == 0 && x > 0.25){
+			  bdryn++;
+			  std::cout<<'('<<x<<','<<y<<')'<<std::endl;
+			  }*/
 			
 		}
 	build_bmp(argv[1], width, height, cache);

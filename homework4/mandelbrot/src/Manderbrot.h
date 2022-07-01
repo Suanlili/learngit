@@ -65,7 +65,9 @@ public:
 
 void Manderbrot::forward_step()
 {
+  // std::complex<double> para=std::conj(iteration_point);
 	iteration_point = iteration_point * iteration_point + iteration_const;
+	//iteration_point = para * para + iteration_const;
 	iteration_times++;
 	if (iteration_times == max_iteration)
 		flag_disconvergence = true;

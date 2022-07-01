@@ -1,0 +1,51 @@
+\documentclass{ctexart}
+\bibliographystyle{plain}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts,amssymb}
+
+\begin{document}
+
+\title{作业4\\Mandelbrot Set的生成和探索}
+\author{张立言\\数学与应用数学 3210101207}
+\maketitle
+
+\begin{abstract}
+Mandelbrot set是十分有趣的数学现象，它凭借神奇的图像特征而变得广为人知。本报告利用了C++和Bitmap库生成Mandelbrot set的图像并作出一些处理和探索，并且引申了tricorn set的图像。
+
+\end{abstract}
+\section{引言}
+Mandelbrot set,中文名又叫做曼德博集合。它是由复平面上组成分形的点组成的一种集合，最早在1978年由Robert W.Brooks和Peter Matelski定义并提出。后来在1980年由Benoit Mandelbrot作出了可视化处理并且最终广为人知。它的神奇之处在于，在图形的“边界”处不断进行放大总会有更多的细节显示出来。关于它的一些性质，许多数学家作出了探索，并且得出了一些结论，而也有很多猜想尚未得到证明，例如其局部联通性质(local connectedness)和某些特殊点的自相似性(self-similarity)。我们利用一些简单的数学结论辅助完成本次可视化Mandelbrot set的工作。
+
+\section{问题的背景介绍}
+我们不必要关心Mandelbrot set的拓扑性质，但可以利用一些简单的结论辅助我们优化我们的可视化处理。绘制Mandelbrot set的图像的主要目的是练习掌握和使用Linux系统工作的技巧。
+\section{数学理论}
+Mandelbrot set的通常定义如下：
+使得复平面上的迭代方程
+\begin{equation}
+z_{n+1}=z_n^2+c \tag{iteq}
+\end{equation}
+在初始值$z_0=0$时进行迭代能够最终收敛的所有$c$的集合。其中，$c \in \mathbb{C}$.
+下面给出一些关于该集合的一些基本的性质：
+在实轴上，Mandelbrot set为严格的闭区间$[-2,\frac{1}{4}]$.拓扑学家证明了它的连通性。接下来介绍一些对于我们编写程序很有用的结论：
+\subsection{Theorem 1}
+\textbf{若$c\in M$,则$|c|\le 2$}
+
+\textit{Proof}{} 假设$|c|>2$,则$|z_1|=|c|,|z_1|>2$\par
+当$n=2$时，
+$$|z_2|=|z_1^2+c|\le |c^2|-|c|$$
+由$|c|>2$可知
+$$|c|^2-|c|>|c|$$
+从而$|z_2|>|c|$\par
+假设$|z_n|>|c|$成立，则$|z_n|>2$,
+$$|z_{n+1}|=|z_n^2+c|\le |z_n|^2-|c|$$
+又因为$|z_n|>2$,从而
+$$|z_{n+1}|>|z_n|^2-|z_n|>|z_n|$$
+可知$|z_n|$递增，从而$|z_n|>|z_1|>2$.假如$|z_n|$不发散，由于它递增，从而收敛至某一常数$a$.于是由$|z_{n+1}|\le |z_n|^2-|c|$取极限可得$a\le a^2-|c|\Rightarrow a^2-a=a(a-1)\le a\le |c|$,矛盾，故而$|z_n|$发散。
+\subsection{Theorem 2}
+\textbf{若$c \in M$则$|z_n|\le 2$}
+
+
+
+\end{document}
