@@ -1,0 +1,14 @@
+\documentclass{ctexart}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\begin{document}
+\title{作业五}
+\author{张立言\\数学与应用数学\\3210101207}
+\maketitle
+
+\section{roots.c程序的分析}
+这是一个求解方程$x^2-5=0$的程序。利用了迭代法，设置了最大迭代次数为100次并且调用了gsl提供的函数进行迭代。设置了解的范围为$[1,5]$,以迭代下界作为方程的近似解。并且输出了多次迭代的结果与精确解$\sqrt{5}$的误差err，最终利用gsl提供的函数判断收敛。从输出结果可以看到，利用gsl提供的函数,只需迭代6次，就能很接近精确解。这体现了gsl的强大之处。
+
+\end{document}

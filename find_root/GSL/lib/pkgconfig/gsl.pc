@@ -1,0 +1,11 @@
+prefix=/home/suanlili/GSL
+exec_prefix=/home/suanlili/GSL
+libdir=/home/suanlili/GSL/lib
+includedir=/home/suanlili/GSL/include
+GSL_CBLAS_LIB=-lgslcblas
+
+Name: GSL
+Description: GNU Scientific Library
+Version: 2.7.1
+Libs: -L/home/suanlili/GSL/lib -lgsl ${GSL_CBLAS_LIB} -lm -lm 
+Cflags: -I/home/suanlili/GSL/include
